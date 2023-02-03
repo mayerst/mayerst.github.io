@@ -1,0 +1,183 @@
+/*
+
+    Simple Personal Page
+    a project by Andrea Rufo
+    www.andrearufo.it
+
+ */
+
+$primary: #f1c40f;
+$body-color: #ffffff;
+
+$font-family-sans-serif: 'IBM Plex Sans', sans-serif;
+$font-family-serif: 'IBM Plex Serif', serif;
+$font-family-mono: 'IBM Plex Mono', monospace;
+$font-family-condensed: 'IBM Plex Sans Condensed', sans-serif;
+$headings-font-family: $font-family-sans-serif;
+
+$font-family-base: $font-family-serif;
+
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i');
+
+// font styles
+.font-100, .font-thin		{ font-weight: 100; }
+.font-200, .font-extralight	{ font-weight: 200; }
+.font-300, .font-light		{ font-weight: 300; }
+.font-400, .font-regular	{ font-weight: 400; }
+.font-500, .font-medium		{ font-weight: 500; }
+.font-600, .font-semibold	{ font-weight: 600; }
+.font-700, .font-bold		{ font-weight: 700; }
+.font-800, .font-extrabold	{ font-weight: 800; }
+.font-900, .font-black		{ font-weight: 900; }
+
+.font-italic				{ font-style: italic; }
+
+// font dimensions
+.font-size-sm				{ font-size: $font-size-sm; }
+.font-size-lg				{ font-size: $font-size-lg; }
+
+// grid no gutter
+.row.row-nogutters {
+	margin-right: 0;
+	margin-left: 0;
+
+	& > [class^="col-"],
+	& > [class*=" col-"] {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+
+// styles
+.row-fullheight{
+	min-height: 100vh;
+	background-image: url(images/photo.jpg);
+	background-position: center;
+	background-size: cover;
+	background-position: fixed;
+
+	@include media-breakpoint-up(lg) {
+		border: 40px solid white;
+		line-height: 2;
+	}
+}
+
+.hover{
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba($modal-backdrop-bg, $modal-backdrop-opacity);
+
+	@include media-breakpoint-up(lg) {
+		display: none;
+	}
+}
+
+.content{
+	h1{
+		margin-bottom: 2rem;
+	}
+
+	p{
+		@include media-breakpoint-up(lg) {
+			font-weight: 300;
+			font-size: 1.2rem;
+		}
+	}
+
+	.credits{
+		font-size: .8rem;
+	}
+}
+
+// Animation
+@keyframes a {
+    0% {
+	    transform: translate3d(-5%, 0, 0);
+	}
+	to {
+	    transform: translate3d(5%, 0, 0);
+	}
+}
+
+@keyframes b {
+    0% {
+    	transform: translate3d(0, 10%, 0);
+	}
+	to {
+	    transform: translate3d(0, -10%, 0);
+	}
+}
+
+body {
+    position: relative;
+
+	&:after, &:before {
+	    content: "";
+	    z-index: 0;
+	    position: fixed;
+	    display: block;
+	    border-radius: 50%;
+	    pointer-events: none;
+	}
+
+	&:before {
+	    top: 15vh;
+	    right: -57vh;
+	    width: 110vh;
+	    height: 110vh;
+        background-color: rgba(white, .1);
+	    transform: translate3d(-5%, 0, 0);
+	    animation: a 20s cubic-bezier(.455, .03, .515, .955) infinite alternate;
+	}
+
+	&:after {
+	    top: -18vh;
+	    right: -20vh;
+	    width: 45vh;
+	    height: 45vh;
+	    opacity: .5;
+        background-color: rgba(white, .3);
+	    transform: translate3d(0, 10%, 0);
+	    animation: b 15s 2s cubic-bezier(.455, .03, .515, .955) infinite alternate;
+	}
+
+	@media (min-width:600px) and (max-width:1023px) {
+	    &:before {
+		    top: 15vh;
+		    right: -50vw;
+		    width: 130vw;
+		    height: 130vw;
+		}
+
+		&:after {
+		    top: -25vh;
+		    right: -20vw;
+		    width: 65vw;
+		    height: 65vw;
+		}
+	}
+
+	@media (min-width:1024px) {
+	    &:before {
+		    top: 8vh;
+		    right: -26vw;
+		    width: 110vw;
+		    height: 110vw;
+		}
+
+		&:after {
+		    top: -45vh;
+		    right: -12vw;
+		    width: 55vw;
+		    height: 55vw;
+		}
+	}
+}
