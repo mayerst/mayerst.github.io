@@ -483,6 +483,13 @@ pre {
   margin-right: auto;
   margin-left: auto; }
 
+  .section {
+color: #545b62;
+padding-right: 25px;
+padding-left: 25px;
+margin-right: auto;
+margin-left: auto;}
+
 .row {
   display: flex;
   flex-wrap: wrap;
